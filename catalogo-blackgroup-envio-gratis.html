@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Group • Perfumería Premium • Envío Gratis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .perfume-card {
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .perfume-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .product-image {
+            transition: transform 0.5s ease;
+        }
+        
+        .perfume-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            box-shadow: 0 4px 6px -1px rgb(220 38 38 / 0.3);
+        }
+
+        .modal {
+            animation: modalPop 0.3s ease forwards;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .price {
+            font-feature-settings: "tnum";
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(37 211 102 / 0.3);
+        }
+
+        .free-shipping-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 4px 6px -1px rgb(16 185 129 / 0.3);
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+    <!-- Navbar -->
+    <nav class="bg-zinc-900 border-b border-zinc-800 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <!-- Logo Black Group -->
+                    <div class="flex items-center gap-x-3">
+                        <div class="w-11 h-11 bg-gradient-to-br from-zinc-800 to-black border border-zinc-700 rounded-2xl flex items-center justify-center shadow-lg">
+                            <i class="fa-solid fa-gem text-[#c9a04a] text-3xl"></i>
+                        </div>
+                        <div>
+                            <span class="font-bold text-3xl tracking-tighter">Black Group</span>
+                            <span class="text-[#c9a04a] text-sm font-medium block -mt-1">Perfumería</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-md mx-8 hidden md:block">
+                    <div class="relative group">
+                        <input 
+                            type="text" 
+                            id="search-input"
+                            placeholder="Buscar perfumes (Moschino, Hugo Boss, Lacoste...)" 
+                            class="w-full bg-zinc-900 border border-zinc-700 focus:border-[#c9a04a] transition-colors text-white placeholder-zinc-400 rounded-3xl py-3 pl-12 pr-5 outline-none text-sm"
+                        >
+                        <i class="fa-solid fa-search absolute left-5 top-4 text-zinc-400 group-focus-within:text-[#c9a04a]"></i>
+                    </div>
+                </div>
+
+                <!-- Right side -->
+                <div class="flex items-center gap-x-4">
+                    <!-- Cart Button -->
+                    <button onclick="showCartModal()"
+                            class="flex items-center gap-x-2 bg-zinc-900 hover:bg-zinc-800 transition-colors border border-zinc-700 hover:border-[#c9a04a] px-5 py-2.5 rounded-3xl text-sm font-medium">
+                        <div class="relative">
+                            <i class="fa-solid fa-shopping-bag text-xl"></i>
+                            <span id="cart-count" 
+                                  class="absolute -top-1.5 -right-1.5 bg-[#c9a04a] text-zinc-950 text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                        </div>
+                        <span class="hidden sm:inline font-semibold">Carrito</span>
+                    </button>
+
+                    <!-- Mobile Search -->
+                    <button onclick="document.getElementById('search-input').focus()" 
+                            class="md:hidden w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white">
+                        <i class="fa-solid fa-search text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="max-w-screen-2xl mx-auto px-6 pt-8 pb-6">
+        <div class="bg-zinc-900 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 border border-zinc-800">
+            <div class="flex-1">
+                <div class="inline-flex items-center gap-x-2 bg-emerald-900/30 border border-emerald-700 px-4 py-1.5 rounded-3xl mb-4">
+                    <i class="fa-solid fa-truck text-emerald-400"></i>
+                    <span class="text-emerald-400 text-sm font-semibold">ENVÍO GRATIS A TODO COLOMBIA</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-bold tracking-tighter leading-none heading-serif">
+                    Black Group<br>Perfumería
+                </h1>
+                <p class="mt-4 text-xl text-zinc-400 max-w-md">
+                    Fragancias exclusivas de alta calidad. <span class="text-emerald-400 font-semibold">Envío gratis incluido</span> en todos los precios.
+                </p>
+                
+                <div class="flex items-center gap-x-4 mt-8">
+                    <button onclick="document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' })" 
+                            class="px-8 py-3.5 bg-[#c9a04a] hover:bg-[#b38b3e] transition-all text-zinc-950 font-semibold rounded-3xl flex items-center gap-x-2 shadow-lg">
+                        <span>Ver catálogo</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button onclick="showCartModal()" 
+                            class="px-6 py-3.5 border border-zinc-700 hover:bg-zinc-800 transition-colors font-medium rounded-3xl flex items-center gap-x-2">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span>Ver carrito</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex-1 flex justify-center">
+                <div class="relative">
+                    <img src="imagenes/hero.jpg" alt="Black Group Perfumería" 
+                         class="rounded-3xl shadow-2xl w-full max-w-[520px] border border-zinc-700">
+                    <div class="absolute -bottom-4 -right-4 bg-zinc-900 border border-emerald-700 px-5 py-3 rounded-3xl shadow-xl">
+                        <div class="flex items-center gap-x-3">
+                            <div>
+                                <div class="text-emerald-400 text-sm font-semibold">+2,800 pedidos</div>
+                                <div class="text-xs text-zinc-400">este año • Envío Gratis</div>
+                            </div>
+                            <div class="text-emerald-400">
+                                <i class="fa-solid fa-check-circle text-3xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Bar -->
+    <div class="max-w-screen-2xl mx-auto px-6 pb-8">
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
+            <div class="flex items-center gap-x-2 text-emerald-400">
+                <i class="fa-solid fa-truck-fast"></i>
+                <span class="font-medium">Envío Gratis a todo el país</span>
+            </div>
+            <div class="flex items-center gap-x-2 text-zinc-400">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Calidad Premium Garantizada</span>
+            </div>
+            <div class="flex items-center gap-x-2 text-zinc-400">
+                <i class="fa-solid fa-headset"></i>
+                <span>Atención por WhatsApp</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div id="products-section" class="max-w-screen-2xl mx-auto px-6 pb-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-y-4 mb-6">
+            <div>
+                <h2 class="text-3xl font-bold tracking-tight">Nuestro Catálogo</h2>
+                <p class="text-zinc-400 mt-1" id="results-count">Mostrando 12 fragancias premium • Envío Gratis incluido</p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-3">
+                <!-- Gender Filter -->
+                <div class="flex bg-zinc-900 border border-zinc-700 rounded-3xl p-1 text-sm">
+                    <button onclick="filterByGender('all')" id="filter-all"
+                            class="px-6 py-2 rounded-[22px] font-medium active-filter bg-[#c9a04a] text-zinc-950">Todos</button>
+                    <button onclick="filterByGender('Hombre')" id="filter-hombre"
+                            class="px-6 py-2 rounded-[22px] font-medium text-zinc-400 hover:text-white">Hombre</button>
+                    <button onclick="filterByGender('Dama')" id="filter-dama"
+                            class="px-6 py-2 rounded-[22px] font-medium text-zinc-400 hover:text-white">Dama</button>
+                </div>
+
+                <!-- Sort -->
+                <select id="sort-select" onchange="applyFilters()"
+                        class="bg-zinc-900 border border-zinc-700 text-white rounded-3xl px-5 py-3 text-sm outline-none focus:border-[#c9a04a]">
+                    <option value="default">Ordenar por defecto</option>
+                    <option value="price-low">Precio: Menor a Mayor</option>
+                    <option value="price-high">Precio: Mayor a Menor</option>
+                    <option value="name">Nombre A - Z</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="products-grid" 
+             class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
+            <!-- Products injected by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 border-t border-zinc-800 mt-12">
+        <div class="max-w-screen-2xl mx-auto px-6 py-8 text-center text-sm text-zinc-400">
+            <p class="text-emerald-400 font-semibold mb-1">✓ ENVÍO GRATIS A TODO COLOMBIA ✓</p>
+            <p>© 2026 <span class="font-semibold text-white">Black Group</span> Perfumería — Bogotá, Colombia</p>
+            <p class="mt-1 text-xs">Precios incluyen envío • Fragancias de alta calidad</p>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="detail-modal" onclick="if (event.target.id === 'detail-modal') hideDetailModal()" 
+         class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-zinc-900 rounded-3xl max-w-lg w-full border border-zinc-700 overflow-hidden modal">
+            
+            <div class="relative">
+                <img id="modal-image" class="w-full h-72 object-cover" alt="">
+                <button onclick="hideDetailModal()" 
+                        class="absolute top-4 right-4 w-9 h-9 bg-black/60 hover:bg-black/80 text-white rounded-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-times text-xl"></i>
+                </button>
+                
+                <div id="modal-discount-badge" 
+                     class="hidden absolute top-4 left-4 discount-badge text-white text-xs font-bold px-3.5 py-1 rounded-2xl">
+                </div>
+                
+                <!-- Free Shipping Badge in Modal -->
+                <div class="absolute bottom-4 left-4 free-shipping-badge text-white text-xs font-bold px-3.5 py-1 rounded-2xl flex items-center gap-x-1.5">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Envío Gratis</span>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div id="modal-brand" class="text-[#c9a04a] text-sm font-semibold tracking-wider"></div>
+                <h3 id="modal-name" class="text-3xl font-bold tracking-tight mt-1"></h3>
+                
+                <div class="flex items-baseline gap-x-3 mt-4">
+                    <span id="modal-price" class="text-4xl font-semibold price"></span>
+                    <span id="modal-original-price" class="line-through text-xl text-zinc-500"></span>
+                </div>
+                
+                <div class="mt-2">
+                    <span class="inline-flex items-center gap-x-1.5 text-emerald-400 text-sm font-medium">
+                        <i class="fa-solid fa-check"></i> 
+                        <span>Envío gratis incluido en el precio</span>
+                    </span>
+                </div>
+                
+                <div class="mt-6">
+                    <h4 class="font-semibold mb-2 text-sm tracking-wider">DESCRIPCIÓN</h4>
+                    <p id="modal-description" class="text-zinc-400 text-[15px] leading-relaxed"></p>
+                </div>
+                
+                <div class="mt-8 flex gap-x-3">
+                    <button onclick="addCurrentProductToCart()" 
+                            class="flex-1 py-4 bg-[#c9a04a] hover:bg-[#b38b3e] active:bg-[#a07a35] transition-colors text-zinc-950 font-bold rounded-3xl flex items-center justify-center gap-x-2 text-base">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span>Agregar al carrito</span>
+                    </button>
+                    
+                    <button onclick="hideDetailModal()" 
+                            class="px-8 py-4 border border-zinc-600 hover:bg-zinc-800 rounded-3xl font-medium transition-colors">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" onclick="if (event.target.id === 'cart-modal') hideCartModal()" 
+         class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-end md:items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-zinc-900 w-full md:w-[420px] md:rounded-3xl md:m-4 border border-zinc-700 rounded-t-3xl modal">
+            
+            <div class="p-5 border-b border-zinc-700 flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <i class="fa-solid fa-shopping-bag text-2xl text-[#c9a04a]"></i>
+                    <div>
+                        <span class="font-bold text-xl">Tu Carrito</span>
+                        <span id="cart-items-count" class="text-xs text-zinc-400 ml-2">(0 productos)</span>
+                    </div>
+                </div>
+                <button onclick="hideCartModal()" class="text-zinc-400 hover:text-white text-2xl leading-none">&times;</button>
+            </div>
+            
+            <div id="cart-items" class="max-h-[320px] overflow-auto p-5 space-y-4 text-sm">
+                <!-- Populated by JS -->
+            </div>
+            
+            <div class="p-5 border-t border-zinc-700 bg-zinc-950 rounded-b-3xl md:rounded-b-3xl">
+                <div class="flex justify-between items-baseline px-1">
+                    <span class="font-semibold text-lg">Total a pagar</span>
+                    <span id="cart-total" class="font-bold text-3xl price text-white">0</span>
+                </div>
+                
+                <div class="mt-1 text-right">
+                    <span class="text-emerald-400 text-xs font-medium">✓ Incluye envío gratis a todo Colombia</span>
+                </div>
+                
+                <div class="mt-6 space-y-3">
+                    <button onclick="showCheckoutModal()"
+                            class="w-full whatsapp-btn text-white font-bold py-4 rounded-3xl flex items-center justify-center gap-x-3 text-base shadow-lg">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Enviar pedido por WhatsApp</span>
+                    </button>
+                    
+                    <button onclick="hideCartModal()" 
+                            class="w-full py-3 text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+                        Seguir comprando
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" onclick="if (event.target.id === 'checkout-modal') hideCheckoutModal()" 
+         class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[110] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-zinc-900 rounded-3xl w-full max-w-md border border-zinc-700 modal">
+            
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-5">
+                    <div>
+                        <h3 class="font-bold text-2xl">Finalizar Pedido</h3>
+                        <p class="text-emerald-400 text-sm font-medium">✓ Envío Gratis incluido</p>
+                    </div>
+                    <button onclick="hideCheckoutModal()" class="text-zinc-400 hover:text-white text-3xl leading-none">&times;</button>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="bg-zinc-950 rounded-2xl p-4 mb-6 text-sm">
+                    <div class="font-semibold mb-3 flex items-center gap-x-2">
+                        <i class="fa-solid fa-receipt"></i> 
+                        <span>Resumen del pedido</span>
+                    </div>
+                    <div id="checkout-summary" class="space-y-1 text-xs text-zinc-300 max-h-28 overflow-auto pr-1">
+                        <!-- JS populated -->
+                    </div>
+                    <div class="border-t border-zinc-700 mt-3 pt-3 flex justify-between font-semibold">
+                        <span>Total (incluye envío gratis)</span>
+                        <span id="checkout-total" class="font-bold text-lg"></span>
+                    </div>
+                </div>
+                
+                <!-- Client Form -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wider mb-1.5 text-zinc-400">NOMBRE COMPLETO *</label>
+                        <input type="text" id="client-name" placeholder="Ej: Carlos Ramírez" 
+                               class="w-full bg-zinc-800 border border-zinc-700 focus:border-[#c9a04a] rounded-2xl px-4 py-3 text-sm outline-none">
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold tracking-wider mb-1.5 text-zinc-400">TELÉFONO *</label>
+                            <input type="tel" id="client-phone" placeholder="Ej: 312 345 6789" 
+                                   class="w-full bg-zinc-800 border border-zinc-700 focus:border-[#c9a04a] rounded-2xl px-4 py-3 text-sm outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold tracking-wider mb-1.5 text-zinc-400">CIUDAD / MUNICIPIO *</label>
+                            <input type="text" id="client-city" placeholder="Ej: Bogotá" 
+                                   class="w-full bg-zinc-800 border border-zinc-700 focus:border-[#c9a04a] rounded-2xl px-4 py-3 text-sm outline-none">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wider mb-1.5 text-zinc-400">DEPARTAMENTO *</label>
+                        <input type="text" id="client-department" placeholder="Ej: Cundinamarca" 
+                               class="w-full bg-zinc-800 border border-zinc-700 focus:border-[#c9a04a] rounded-2xl px-4 py-3 text-sm outline-none">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wider mb-1.5 text-zinc-400">DIRECCIÓN DE ENTREGA *</label>
+                        <input type="text" id="client-address" placeholder="Ej: Calle 45 # 12-34, Apto 502" 
+                               class="w-full bg-zinc-800 border border-zinc-700 focus:border-[#c9a04a] rounded-2xl px-4 py-3 text-sm outline-none">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wider mb-1.5 text-zinc-400">NOTAS ADICIONALES</label>
+                        <textarea id="client-notes" rows="2" placeholder="Ej: Entregar en la tarde" 
+                                  class="w-full bg-zinc-800 border border-zinc-700 focus:border-[#c9a04a] rounded-2xl px-4 py-3 text-sm outline-none resize-y"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-zinc-700 p-5 bg-zinc-950 rounded-b-3xl">
+                <button onclick="sendOrderToWhatsApp()"
+                        class="whatsapp-btn w-full flex items-center justify-center gap-x-3 py-4 rounded-3xl text-white font-bold text-lg shadow-xl active:scale-[0.985] transition-all">
+                    <i class="fa-brands fa-whatsapp text-3xl"></i>
+                    <span>Enviar pedido a WhatsApp</span>
+                </button>
+                
+                <p class="text-center text-[10px] text-zinc-500 mt-3">
+                    Se abrirá WhatsApp con tu pedido listo para enviar al 321 893 2008
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Product Data - Black Group 
+        // Precios actualizados: +5% ganancia + $18.000 de envío INCLUIDO en cada producto
+        // Ahora se anuncia como "ENVÍO GRATIS"
+        let products = [
+            {
+                id: 1,
+                name: "Moschino Toy Boy",
+                brand: "Moschino",
+                gender: "Hombre",
+                price: 89775,           // 71,775 + 18,000
+                originalPrice: 130500,
+                discount: 31,
+                image: "imagenes/1 (20).jpg",
+                description: "Fragancia amaderada y fresca con notas de pera, jengibre y vetiver. Ideal para el día a día."
+            },
+            {
+                id: 2,
+                name: "Moschino Toy 2",
+                brand: "Moschino",
+                gender: "Dama",
+                price: 90500,           // 72,500 + 18,000
+                originalPrice: 130500,
+                discount: 31,
+                image: "imagenes/1 (19).jpg",
+                description: "Aroma dulce y floral con toques de vainilla y almendra. Perfecto para ocasiones especiales."
+            },
+            {
+                id: 3,
+                name: "Hugo Boss Bottle Night",
+                brand: "Hugo Boss",
+                gender: "Hombre",
+                price: 83250,           // 65,250 + 18,000
+                originalPrice: 123250,
+                discount: 32,
+                image: "imagenes/1 (18).jpg",
+                description: "Intensa y masculina con notas de menta, canela y madera de sándalo."
+            },
+            {
+                id: 4,
+                name: "Hugo Boss Bottled",
+                brand: "Hugo Boss",
+                gender: "Hombre",
+                price: 73100,           // 55,100 + 18,000
+                originalPrice: 116000,
+                discount: 37,
+                image: "imagenes/1 (17).jpg",
+                description: "Clásico atemporal con notas de manzana, canela y vetiver. Elegancia en cada gota."
+            },
+            {
+                id: 5,
+                name: "Hugo Boss Bottled Unlimited",
+                brand: "Hugo Boss",
+                gender: "Hombre",
+                price: 60050,           // 42,050 + 18,000
+                originalPrice: 87000,
+                discount: 31,
+                image: "imagenes/1 (16).jpg",
+                description: "Versión más fresca y moderna del clásico Bottled. Notas cítricas y amaderadas."
+            },
+            {
+                id: 6,
+                name: "Lacoste Red",
+                brand: "Lacoste",
+                gender: "Hombre",
+                price: 57150,           // 39,150 + 18,000
+                originalPrice: 94250,
+                discount: 39,
+                image: "imagenes/1 (15).jpg",
+                description: "Energética y deportiva. Notas de toronja, romero y cedro."
+            },
+            {
+                id: 7,
+                name: "Hugo Boss The Scent",
+                brand: "Hugo Boss",
+                gender: "Dama",
+                price: 80350,           // 62,350 + 18,000
+                originalPrice: null,
+                discount: null,
+                image: "imagenes/1 (14).jpg",
+                description: "Fragancia femenina sofisticada con notas de melocotón, jazmín y pachulí."
+            },
+            {
+                id: 8,
+                name: "Polo Red",
+                brand: "Polo",
+                gender: "Hombre",
+                price: 75855,           // 57,855 + 18,000
+                originalPrice: 108750,
+                discount: 30,
+                image: "imagenes/1 (13).jpg",
+                description: "Aroma fresco y potente con notas de toronja, salvia y ámbar."
+            },
+            {
+                id: 9,
+                name: "Polo Blue",
+                brand: "Polo",
+                gender: "Hombre",
+                price: 75855,           // 57,855 + 18,000
+                originalPrice: 108750,
+                discount: 30,
+                image: "imagenes/1 (12).jpg",
+                description: "Fresco y acuático. Notas de melón, salvia y madera de sándalo."
+            },
+            {
+                id: 10,
+                name: "Dolce & Gabbana K",
+                brand: "Dolce & Gabbana",
+                gender: "Hombre",
+                price: 75855,           // 57,855 + 18,000
+                originalPrice: 116000,
+                discount: 35,
+                image: "imagenes/1 (11).jpg",
+                description: "Elegante y mediterráneo. Notas de cítricos, albahaca y vetiver."
+            },
+            {
+                id: 11,
+                name: "Versace Bright Crystal",
+                brand: "Versace",
+                gender: "Dama",
+                price: 83250,           // 65,250 + 18,000
+                originalPrice: null,
+                discount: null,
+                image: "imagenes/1 (10).jpg",
+                description: "Fresco y luminoso con notas de granada, peonía y ámbar."
+            },
+            {
+                id: 12,
+                name: "Lacoste Blanc",
+                brand: "Lacoste",
+                gender: "Hombre",
+                price: 75855,           // 57,855 + 18,000
+                originalPrice: 72500,
+                discount: null,
+                image: "imagenes/1 (9).jpg",
+                description: "Limpio y fresco. Ideal para uso diario con notas cítricas y verdes."
+            }
+        ]
+        
+        let cart = []
+        let currentFilter = 'all'
+        let currentProduct = null
+        
+        function formatPrice(price) {
+            return '$' + Math.round(price).toLocaleString('es-CO')
+        }
+        
+        function renderProducts(filteredProducts) {
+            const grid = document.getElementById('products-grid')
+            grid.innerHTML = ''
+            
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center">
+                        <i class="fa-solid fa-search text-5xl text-zinc-700 mb-4"></i>
+                        <p class="text-xl text-zinc-400">No se encontraron productos</p>
+                    </div>
+                `
+                return
+            }
+            
+            filteredProducts.forEach(product => {
+                const hasDiscount = product.originalPrice && product.discount
+                
+                const cardHTML = `
+                    <div onclick="showProductDetail(${product.id})" 
+                         class="perfume-card bg-zinc-900 border border-zinc-700 rounded-3xl overflow-hidden cursor-pointer group">
+                        
+                        <div class="relative h-52 overflow-hidden bg-zinc-800">
+                            <img src="${product.image}" alt="${product.name}" 
+                                 class="product-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            
+                            ${hasDiscount ? `
+                                <div class="absolute top-3 right-3 discount-badge text-white text-xs font-bold px-3 py-1 rounded-2xl shadow-lg">
+                                    -${product.discount}%
+                                </div>
+                            ` : ''}
+                            
+                            <!-- Free Shipping Badge -->
+                            <div class="absolute bottom-3 left-3 free-shipping-badge text-white text-[10px] font-bold px-2.5 py-0.5 rounded-xl flex items-center gap-x-1">
+                                <i class="fa-solid fa-truck text-xs"></i>
+                                <span>Gratis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4">
+                            <div class="text-[#c9a04a] text-xs font-bold tracking-[1px]">${product.brand.toUpperCase()}</div>
+                            
+                            <h3 class="font-semibold text-lg leading-tight mt-1 line-clamp-2">${product.name}</h3>
+                            
+                            <div class="mt-3 flex items-end justify-between">
+                                <div>
+                                    <div class="flex items-baseline gap-x-1.5">
+                                        <span class="text-2xl font-bold price">${formatPrice(product.price)}</span>
+                                    </div>
+                                    
+                                    ${hasDiscount ? `
+                                        <div class="flex items-center gap-x-1.5">
+                                            <span class="line-through text-sm text-zinc-500">${formatPrice(product.originalPrice)}</span>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                
+                                <button onclick="event.stopImmediatePropagation(); addToCart(${product.id})" 
+                                        class="px-4 py-2 text-xs font-bold bg-[#c9a04a] hover:bg-[#b38b3e] transition-all text-zinc-950 rounded-2xl flex items-center gap-x-1.5">
+                                    <i class="fa-solid fa-plus text-sm"></i>
+                                    <span class="hidden sm:inline">Agregar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `
+                grid.innerHTML += cardHTML
+            })
+            
+            document.getElementById('results-count').innerHTML = `Mostrando ${filteredProducts.length} fragancias premium • <span class="text-emerald-400">Envío Gratis incluido</span>`
+        }
+        
+        function applyFilters() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim()
+            const sortValue = document.getElementById('sort-select').value
+            
+            let filtered = products
+            
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(p => p.gender === currentFilter)
+            }
+            
+            if (searchTerm !== '') {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(searchTerm) || 
+                    p.brand.toLowerCase().includes(searchTerm)
+                )
+            }
+            
+            if (sortValue === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price)
+            } else if (sortValue === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price)
+            } else if (sortValue === 'name') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name))
+            }
+            
+            renderProducts(filtered)
+        }
+        
+        function filterByGender(gender) {
+            currentFilter = gender
+            
+            document.querySelectorAll('[id^="filter-"]').forEach(btn => {
+                btn.classList.remove('active-filter', 'bg-[#c9a04a]', 'text-zinc-950')
+                btn.classList.add('text-zinc-400')
+                
+                if ((gender === 'all' && btn.id === 'filter-all') ||
+                    (gender === 'Hombre' && btn.id === 'filter-hombre') ||
+                    (gender === 'Dama' && btn.id === 'filter-dama')) {
+                    btn.classList.add('active-filter', 'bg-[#c9a04a]', 'text-zinc-950')
+                    btn.classList.remove('text-zinc-400')
+                }
+            })
+            
+            applyFilters()
+        }
+        
+        function showProductDetail(productId) {
+            const product = products.find(p => p.id === productId)
+            if (!product) return
+            
+            currentProduct = product
+            
+            document.getElementById('modal-image').src = product.image
+            document.getElementById('modal-brand').innerHTML = product.brand.toUpperCase()
+            document.getElementById('modal-name').innerHTML = product.name
+            document.getElementById('modal-price').innerHTML = formatPrice(product.price)
+            document.getElementById('modal-description').innerHTML = product.description || 'Fragancia de alta calidad con excelente fijación y proyección.'
+            
+            const originalPriceEl = document.getElementById('modal-original-price')
+            const discountBadge = document.getElementById('modal-discount-badge')
+            
+            if (product.originalPrice && product.discount) {
+                originalPriceEl.innerHTML = formatPrice(product.originalPrice)
+                originalPriceEl.style.display = 'inline'
+                discountBadge.innerHTML = `-${product.discount}%`
+                discountBadge.classList.remove('hidden')
+            } else {
+                originalPriceEl.style.display = 'none'
+                discountBadge.classList.add('hidden')
+            }
+            
+            document.getElementById('detail-modal').classList.remove('hidden')
+            document.getElementById('detail-modal').classList.add('flex')
+        }
+        
+        function hideDetailModal() {
+            const modal = document.getElementById('detail-modal')
+            modal.classList.remove('flex')
+            modal.classList.add('hidden')
+        }
+        
+        function addCurrentProductToCart() {
+            if (currentProduct) {
+                addToCart(currentProduct.id)
+                hideDetailModal()
+            }
+        }
+        
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId)
+            if (!product) return
+            
+            const existingItem = cart.find(item => item.id === productId)
+            
+            if (existingItem) {
+                existingItem.quantity++
+            } else {
+                cart.push({ ...product, quantity: 1 })
+            }
+            
+            updateCartCount()
+            showToast(`${product.name} agregado al carrito`, 'success')
+        }
+        
+        function updateCartCount() {
+            const countEl = document.getElementById('cart-count')
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
+            countEl.textContent = totalItems
+        }
+        
+        function showCartModal() {
+            const modal = document.getElementById('cart-modal')
+            const itemsContainer = document.getElementById('cart-items')
+            
+            itemsContainer.innerHTML = ''
+            
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fa-solid fa-shopping-bag text-6xl text-zinc-700 mb-4"></i>
+                        <p class="text-zinc-400">Tu carrito está vacío</p>
+                        <button onclick="hideCartModal()" class="mt-4 text-sm text-[#c9a04a] hover:text-[#b38b3e]">Explorar catálogo</button>
+                    </div>
+                `
+                document.getElementById('cart-total').innerHTML = formatPrice(0)
+            } else {
+                let total = 0
+                
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity
+                    total += itemTotal
+                    
+                    const itemHTML = `
+                        <div class="flex gap-4 bg-zinc-800 rounded-2xl p-3">
+                            <img src="${item.image}" class="w-16 h-16 object-cover rounded-2xl flex-shrink-0" alt="${item.name}">
+                            
+                            <div class="flex-1 min-w-0">
+                                <div class="font-semibold text-sm leading-tight">${item.name}</div>
+                                <div class="text-xs text-[#c9a04a]">${item.brand}</div>
+                                
+                                <div class="flex items-center justify-between mt-2">
+                                    <div>
+                                        <span class="font-bold">${formatPrice(item.price)}</span>
+                                        <span class="text-xs text-zinc-400"> c/u</span>
+                                    </div>
+                                    
+                                    <div class="flex items-center gap-x-1 bg-zinc-900 rounded-2xl">
+                                        <button onclick="changeCartQuantity(${index}, -1)" class="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-white">-</button>
+                                        <span class="px-2 font-bold tabular-nums">${item.quantity}</span>
+                                        <button onclick="changeCartQuantity(${index}, 1)" class="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-white">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-right flex flex-col justify-between items-end">
+                                <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-500 text-xs">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                
+                                <div class="font-bold text-right">
+                                    ${formatPrice(itemTotal)}
+                                </div>
+                            </div>
+                        </div>
+                    `
+                    itemsContainer.innerHTML += itemHTML
+                })
+                
+                document.getElementById('cart-total').innerHTML = formatPrice(total)
+            }
+            
+            document.getElementById('cart-items-count').innerHTML = `(${cart.length} productos)`
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
+        }
+        
+        function hideCartModal() {
+            const modal = document.getElementById('cart-modal')
+            modal.classList.remove('flex')
+            modal.classList.add('hidden')
+        }
+        
+        function changeCartQuantity(index, change) {
+            const item = cart[index]
+            const newQuantity = item.quantity + change
+            
+            if (newQuantity < 1) return
+            
+            item.quantity = newQuantity
+            showCartModal()
+            updateCartCount()
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1)
+            showCartModal()
+            updateCartCount()
+        }
+        
+        function showCheckoutModal() {
+            if (cart.length === 0) return
+            
+            hideCartModal()
+            
+            const modal = document.getElementById('checkout-modal')
+            const summaryContainer = document.getElementById('checkout-summary')
+            
+            summaryContainer.innerHTML = ''
+            let total = 0
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity
+                total += itemTotal
+                
+                summaryContainer.innerHTML += `
+                    <div class="flex justify-between items-center text-xs">
+                        <div class="flex-1 truncate pr-3">${item.quantity}× ${item.name}</div>
+                        <div class="font-medium whitespace-nowrap">${formatPrice(itemTotal)}</div>
+                    </div>
+                `
+            })
+            
+            document.getElementById('checkout-total').innerHTML = formatPrice(total)
+            
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
+            
+            setTimeout(() => {
+                document.getElementById('client-name').focus()
+            }, 300)
+        }
+        
+        function hideCheckoutModal() {
+            const modal = document.getElementById('checkout-modal')
+            modal.classList.remove('flex')
+            modal.classList.add('hidden')
+        }
+        
+        function sendOrderToWhatsApp() {
+            const name = document.getElementById('client-name').value.trim()
+            const phone = document.getElementById('client-phone').value.trim()
+            const city = document.getElementById('client-city').value.trim()
+            const department = document.getElementById('client-department').value.trim()
+            const address = document.getElementById('client-address').value.trim()
+            const notes = document.getElementById('client-notes').value.trim()
+            
+            if (!name || !phone || !city || !department || !address) {
+                showToast('Por favor completa todos los campos obligatorios', 'error')
+                return
+            }
+            
+            let message = `🛍️ *NUEVO PEDIDO - BLACK GROUP PERFUMERÍA*\n\n`
+            message += `👤 *Cliente:* ${name}\n`
+            message += `📞 *Teléfono:* ${phone}\n`
+            message += `📍 *Ciudad/Municipio:* ${city}\n`
+            message += `🗺️ *Departamento:* ${department}\n`
+            message += `🏠 *Dirección:* ${address}\n\n`
+            
+            message += `📦 *PRODUCTOS:*\n`
+            
+            let total = 0
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity
+                total += itemTotal
+                message += `• ${item.quantity}× ${item.name} (${item.brand}) — ${formatPrice(itemTotal)}\n`
+            })
+            
+            message += `\n💰 *TOTAL A PAGAR:* ${formatPrice(total)}\n`
+            message += `🚚 *ENVÍO:* GRATIS!\n\n`
+            
+            if (notes) {
+                message += `📝 *Notas:* ${notes}\n\n`
+            }
+            
+            message += `✅ Pedido realizado desde Black Group Perfumería.\n`
+            message += `¡Gracias por tu compra!`
+            
+            const encodedMessage = encodeURIComponent(message)
+            const whatsappNumber = '573218932008'
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+            
+            window.open(whatsappURL, '_blank')
+            
+            showToast('¡Pedido enviado a WhatsApp!', 'success')
+            
+            setTimeout(() => {
+                hideCheckoutModal()
+                cart = []
+                updateCartCount()
+                
+                const thanksModal = document.createElement('div')
+                thanksModal.className = `fixed inset-0 bg-black/70 flex items-center justify-center z-[120] p-4`
+                thanksModal.innerHTML = `
+                    <div class="bg-zinc-900 rounded-3xl p-8 max-w-sm text-center border border-zinc-700">
+                        <i class="fa-solid fa-check-circle text-emerald-400 text-6xl mb-4"></i>
+                        <h3 class="text-2xl font-bold">¡Pedido enviado!</h3>
+                        <p class="text-zinc-400 mt-2">Nos pondremos en contacto contigo muy pronto para confirmar tu pedido.</p>
+                        <p class="text-emerald-400 text-sm mt-1 font-medium">Envío gratis a todo Colombia</p>
+                        
+                        <button onclick="this.closest('.fixed').remove()" 
+                                class="mt-6 px-8 py-3 bg-emerald-600 hover:bg-emerald-700 rounded-3xl font-semibold w-full">
+                            Volver al catálogo
+                        </button>
+                    </div>
+                `
+                document.body.appendChild(thanksModal)
+            }, 1200)
+        }
+        
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div')
+            toast.className = `fixed bottom-5 left-1/2 -translate-x-1/2 z-[200] px-5 py-3 rounded-3xl shadow-2xl flex items-center gap-x-3 text-sm font-medium ${type === 'success' ? 'bg-emerald-600' : 'bg-red-600'} text-white`
+            
+            toast.innerHTML = `
+                <div class="flex items-center gap-x-3">
+                    <i class="fa-solid ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `
+            
+            document.body.appendChild(toast)
+            
+            setTimeout(() => {
+                toast.style.transition = 'all 0.3s ease'
+                toast.style.opacity = '0'
+                setTimeout(() => toast.remove(), 300)
+            }, 2800)
+        }
+        
+        function initializeApp() {
+            renderProducts(products)
+            
+            const searchInput = document.getElementById('search-input')
+            searchInput.addEventListener('input', () => {
+                applyFilters()
+            })
+            
+            document.getElementById('filter-all').classList.add('bg-[#c9a04a]', 'text-zinc-950')
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "/" && document.activeElement.tagName === "BODY") {
+                    e.preventDefault()
+                    document.getElementById('search-input').focus()
+                }
+            })
+            
+            updateCartCount()
+            
+            // Easter egg: presionar "?" muestra todos los productos
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "?") {
+                    e.preventDefault()
+                    filterByGender('all')
+                    document.getElementById('search-input').value = ''
+                    applyFilters()
+                }
+            })
+        }
+        
+        window.onload = initializeApp
+    </script>
+</body>
+</html>
